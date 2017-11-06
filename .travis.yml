@@ -35,16 +35,17 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 before_script:
-- npm install -g @angular/cli
-- npm install -g karma
-- npm install
-- ng build
-
-sctipt: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
-
-after_sucess:
+  - npm install -g @angular/cli
+  - npm install -g karma
+  - npm install
   - ng build --prod
   - docker build -t alexgre/app_latest .
   - cat docker_pwd.txt |docker login -u alexgre --password-stdin
+
+sctipt: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
+
+after_success:
+  - echo "finished, making pushing docker image"
   - docker push alexgre/app_latest
+  - echo "done"
 
