@@ -1,8 +1,20 @@
+notifications: # set notification options
+  email:
+    recipients:
+      - alexgre@ufl.edu
+    # change is when the repo status goes from pass to fail or vice versa
+    on_success: always
+    on_failure: always
+
 sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - '6.11.0'
+  #- '6.11.0'
+  - '8.7.0'
+
+services:
+  - docker
 
 branches:
   only:
@@ -29,3 +41,10 @@ before_script:
 - ng build
 
 sctipt: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
+
+after_sucess:
+  - ng build --prod
+  - docker build -t alexgre/app_latest .
+  - cat docker_pwd.txt |docker login -u alexgre --password-stdin
+  - docker push alexgre/app_latest
+
