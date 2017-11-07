@@ -43,7 +43,7 @@ before_script:
 script: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
 after_success:
 - sudo docker push alexgre/app_latest
-- ./test.sh < input.txt
+- yes | ./test.sh 
 - sudo docker stop $(docker ps -q --filter ancestor=alexgre/angulardocker1.0)
 - sudo docker pull alexgre/app_latest
 - sudo docker run --rm -p 80:80 alexgre/app_latest
