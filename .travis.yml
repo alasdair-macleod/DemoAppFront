@@ -1,56 +1,49 @@
-notifications: # set notification options
+notifications:
   email:
     recipients:
-      - alexgre@ufl.edu
-    # change is when the repo status goes from pass to fail or vice versa
+    - alexgre@ufl.edu
     on_success: always
     on_failure: always
-
 sudo: required
 dist: trusty
 language: node_js
 node_js:
-  #- '6.11.0'
-  - '8.7.0'
-
-#services:
-#  - docker
-
+- 8.7.0
 branches:
   only:
-    - master
-
+  - master
 addons:
   chrome: stable
 apt:
   sources:
-    - google-chrome
+  - google-chrome
   packages:
-    - google-chrome-stable
-    - google-chrome-beta
-
+  - google-chrome-stable
+  - google-chrome-beta
 before_install:
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-
+- openssl aes-256-cbc -K $encrypted_292734f88679_key -iv $encrypted_292734f88679_iv
+  -in alexgre1.pem.enc -out alexgre1.pem -d
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 before_script:
-  - npm install -g @angular/cli
-  - npm install -g karma
-  - npm install
-  - ng build --prod
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  - sudo apt-get update
-  - apt-cache policy docker-ce
-  - sudo apt-get install -y docker-ce
-  - sudo docker build -t alexgre/app_latest .
-  - cat docker_pwd.txt | sudo docker login -u alexgre --password-stdin
-
+- npm install -g @angular/cli
+- npm install -g karma
+- npm install
+- ng build --prod
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
+  $(lsb_release -cs) stable"
+- sudo apt-get update
+- apt-cache policy docker-ce
+- sudo apt-get install -y docker-ce
+- sudo docker build -t alexgre/app_latest .
+- cat docker_pwd.txt | sudo docker login -u alexgre --password-stdin
+- sudo apt-get install ssh
 sctipt: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
-
 after_success:
-  - echo "finished, making pushing docker image"
-  - sudo docker push alexgre/app_latest
-  - echo "done"
-
+- sudo docker push alexgre/app_latest
+- ssh -i "alexgre1.pem" ubuntu@ec2-34-201-172-56.compute-1.amazonaws.com
+- sudo docker stop $(docker ps -q --filter ancestor=alexgre/angulardocker1.0)
+- sudo docker pull alexgre/app_latest
+- sudo docker run --rm -p 80:80 alexgre/app_latest
