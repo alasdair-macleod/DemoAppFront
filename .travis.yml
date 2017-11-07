@@ -40,9 +40,10 @@ before_script:
 - sudo docker build -t alexgre/app_latest .
 - cat docker_pwd.txt | sudo docker login -u alexgre --password-stdin
 - sudo apt-get install ssh
-sctipt: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
+script: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
 after_success:
 - sudo docker push alexgre/app_latest
+- ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 - ssh -i "alexgre1.pem" ubuntu@ec2-34-201-172-56.compute-1.amazonaws.com
 - sudo docker stop $(docker ps -q --filter ancestor=alexgre/angulardocker1.0)
 - sudo docker pull alexgre/app_latest
