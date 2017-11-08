@@ -37,13 +37,21 @@ before_script:
 - sudo apt-get update
 - apt-cache policy docker-ce
 - sudo apt-get install -y docker-ce
-- sudo docker build -t alexgre/app_latest .
+- sudo docker build -t app_1.0 .
 - cat docker_pwd.txt | sudo docker login -u alexgre --password-stdin
 - sudo apt-get install ssh
 script: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
 after_success:
 - sudo docker push alexgre/app_latest
-- printf "yes" | ./test.sh 
-# - sudo docker stop $(docker ps -q --filter ancestor=alexgre/angulardocker1.0)
-# - sudo docker pull alexgre/app_latest
-# - sudo docker run --rm -p 80:80 alexgre/app_latest
+- ssh -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no  -i "alexgre1.pem"  ubuntu@ec2-54-209-186-108.compute-1.amazonaws.com
+- sudo docker stop $(docker ps -q --filter ancestor=alexgre/angulardocker1.0)
+- sudo docker pull alexgre/app_latest
+- sudo docker run --rm -p 80:80 alexgre/app_latest
+
+
+
+  # - pip install --user awscli # install aws cli w/o sudo
+  # - export PATH=$PATH:$HOME/.local/bin # put aws in the path
+  # - eval $(aws ecr get-login --region us-east-1) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+  # - docker tag app_1.0 538225610467.dkr.ecr.us-east-1.amazonaws.com/app:latest
+  # - docker push 538225610467.dkr.ecr.us-east-1.amazonaws.com/app:latest
