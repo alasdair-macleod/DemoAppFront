@@ -41,6 +41,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# keys, password, remote commend
 *.pem
 docker_pwd.txt
-test.sh
+deploy_docker.sh
+deploy_commend.tar
