@@ -22,12 +22,9 @@ apt:
   - google-chrome-beta
 before_install:
 #in production do not push alexgre.pem, test.sh and docker_pwd.txt to the github
-- openssl aes-256-cbc -K $encrypted_292734f88679_key -iv $encrypted_292734f88679_iv
-  -in docker_pwd.txt.enc -out docker_pwd.txt -d
-- openssl aes-256-cbc -K $encrypted_292734f88679_key -iv $encrypted_292734f88679_iv
-  -in test.sh.enc -out test.sh -d
-- openssl aes-256-cbc -K $encrypted_292734f88679_key -iv $encrypted_292734f88679_iv
-  -in alexgre1.pem.enc -out alexgre1.pem -d
+- openssl aes-256-cbc -K $encrypted_292734f88679_key -iv $encrypted_292734f88679_iv -in docker_pwd.txt.enc -out docker_pwd.txt -d
+- openssl aes-256-cbc -K $encrypted_292734f88679_key -iv $encrypted_292734f88679_iv -in test.sh.enc -out test.sh -d
+- openssl aes-256-cbc -K $encrypted_292734f88679_key -iv $encrypted_292734f88679_iv -in alexgre1.pem.enc -out alexgre1.pem -d
 - chmod 600 alexgre1.pem
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
