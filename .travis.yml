@@ -47,14 +47,7 @@ after_success:
 - pip install -U pip
 - sudo pip install awscli --upgrade
 - export PATH=~/.local/bin:$PATH
-- echo ${AWS_ACCESS_KEY_ID}
-- echo ${AWS_SECRET_ACCESS_KEY}
-- mkdir -p ~/.aws
-- cat > ~/.aws/credentials << EOL
-  [default]
-  aws_access_key_id = ${AWS_ACCESS_KEY_ID}
-  aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
-  EOL
+- ./ecr_credentials.sh
 - eval $(aws ecr get-login --no-include-email --region us-east-1)
 - ./docker_perserve.sh
 - sudo apt-get install ssh
