@@ -43,6 +43,6 @@ Thumbs.db
 
 # keys, password, remote commend
 *.pem
-docker_pwd.txt
+doc
 deploy_docker.sh
 deploy_commend.tar
