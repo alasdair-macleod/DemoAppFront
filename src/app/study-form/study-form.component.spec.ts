@@ -16,14 +16,15 @@ import {MathJaxDirective} from '../mathjax/mathjax.directive';
 import {WithinIsuOutcomesComponent} from '../within-isu-outcomes/within-isu-outcomes.component';
 import {WithinIsuRepeatedMeasuresComponent} from '../within-isu-repeated-measures/within-isu-repeated-measures.component';
 import {WithinIsuClustersComponent} from '../within-isu-clusters/within-isu-clusters.component';
-import {BetweenIsuPredictorsComponent} from "../between-isu-predictors/between-isu-predictors.component";
-import {BetweenIsuGroupsComponent} from "../between-isu-groups/between-isu-groups.component";
-import {BetweenISUFactors} from "../shared/BetweenISUFactors";
-import {Predictor} from "../shared/Predictor";
-import {GaussianCovariateComponent} from "../gaussian-covariate/gaussian-covariate.component";
-import {HypothesisEffectChoiceComponent} from "../hypothesis-effect-choice/hypothesis-effect-choice.component";
-import {HypothesisBetweenComponent} from "../hypothesis-between/hypothesis-between.component";
-import {HypothesisWithinComponent} from "../hypothesis-within/hypothesis-within.component";
+import {BetweenIsuPredictorsComponent} from '../between-isu-predictors/between-isu-predictors.component';
+import {BetweenIsuGroupsComponent} from '../between-isu-groups/between-isu-groups.component';
+import {GaussianCovariateComponent} from '../gaussian-covariate/gaussian-covariate.component';
+import {HypothesisEffectChoiceComponent} from '../hypothesis-effect-choice/hypothesis-effect-choice.component';
+import {HypothesisBetweenComponent} from '../hypothesis-between/hypothesis-between.component';
+import {HypothesisWithinComponent} from '../hypothesis-within/hypothesis-within.component';
+import {ParametersMarginalMeansComponent} from '../parameters-marginal-means/parameters-marginal-means.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {ParametersScaleFactorComponent} from '../parameters-scale-factor/parameters-scale-factor.component';
 
 describe('StudyFormComponent', () => {
   let component: StudyFormComponent;
@@ -34,6 +35,9 @@ describe('StudyFormComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
+        RouterTestingModule.withRoutes([
+          { path: 'design/MODE', component: UserModeComponent}
+        ]),
         LoggerModule.forRoot({serverLoggingUrl: 'fake/api/clientsidelog', level: 'DEBUG', serverLogLevel: 'WARN'}) ],
       declarations: [
         StudyFormComponent,
@@ -51,9 +55,14 @@ describe('StudyFormComponent', () => {
         HypothesisEffectChoiceComponent,
         HypothesisBetweenComponent,
         HypothesisWithinComponent,
+        ParametersMarginalMeansComponent,
+        ParametersScaleFactorComponent,
         CorrelationMatrixComponent,
         MathJaxDirective],
-      providers: [ StudyService, { provide: Http, useClass: MockBackend }, {provide: NGXLogger, useClass: NGXLoggerMock} ]
+      providers: [ StudyService,
+        { provide: Http, useClass: MockBackend },
+        {provide: NGXLogger, useClass: NGXLoggerMock},
+        RouterTestingModule ]
     })
     .compileComponents();
 
