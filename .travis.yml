@@ -59,6 +59,7 @@ after_success:
   #   aws_access_key_id = ${AWS_ACCESS_KEY_ID}
   #   aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY} 
   #   EOL
+  - chmod 700 ecr_user.sh
   - ./ecr_user.sh
   #login ECR
   - eval $(aws ecr get-login --no-include-email --region us-east-1)
