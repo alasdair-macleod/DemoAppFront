@@ -22,7 +22,7 @@ apt:
   - google-chrome-beta
 before_install:
 - openssl aes-256-cbc -K $encrypted_feeb12f69dac_key -iv $encrypted_feeb12f69dac_iv -in dc.tar.enc -out dc.tar -d
-- tar -xvf dc.tar
+- tar -xvf --warning=no-unknown-keyword dc.tar
 - chmod 600 alexgre1.pem
 - chmod 700 deploy_docker.sh
 - chmod 700 docker_perserve.sh
