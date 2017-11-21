@@ -28,13 +28,21 @@ before_install:
 - chmod 700 deploy_docker.sh
 - chmod 700 docker_perserve.sh
 - chmod 700 ecr_credentials.sh
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 before_script:
+- npm install -g @angular/cli
+- npm install -g karma
+- npm install
+- ng build --prod
 - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
   $(lsb_release -cs) stable"
 - sudo apt-get update
 - apt-cache policy docker-ce
 - sudo apt-get install -y docker-ce
+script: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
 after_success:
 - pip install awscli --upgrade
 - export PATH=~/.local/bin:$PATH
