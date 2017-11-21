@@ -8,6 +8,8 @@ VERSION=$(node -e "console.log(require('./package.json').version)")
 #build image
 docker build -t $REPO/$IMAGE:latest -t $REPO/$IMAGE:$VERSION .
 #upload the image to AWS ECR repo
+echo ${AWS_ACCESS_KEY_ID}
+echo ${AWS_SECRET_ACCESS_KEY}
 mkdir -p ~/.aws
 cat > ~/.aws/credentials << EOL
 [default]
