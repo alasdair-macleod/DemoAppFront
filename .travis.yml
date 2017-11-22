@@ -12,6 +12,7 @@ node_js:
 branches:
   only:
   - master
+  - build
 addons:
   chrome: stable
 apt:
