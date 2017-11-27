@@ -1,4 +1,3 @@
-# SET THE FOLLOWING VARIABLES
 # docker repo username
 REPO=$"538225610467.dkr.ecr.us-east-1.amazonaws.com"
 # image name
