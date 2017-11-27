@@ -37,37 +37,62 @@ before_script:
   - npm install -g @angular/cli
   - npm install -g karma
   - npm install
-  - ng build --prod
-  #install docker since the travis docker service version is too old
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
-    $(lsb_release -cs) stable"
-  - sudo apt-get update
-  - apt-cache policy docker-ce
-  - sudo apt-get install -y docker-ce
 script: 
   - ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
 after_success:
-  #up data pip
-  - pip install -U pip
-  #install awscli
-  - sudo pip install awscli --upgrade
-  - export PATH=~/.local/bin:$PATH
-  #add Aws IAM user credentials to env
-  - mkdir -p ~/.aws
-  # - cat > ~/.aws/credentials << EOL 
-  #   [default] 
-  #   aws_access_key_id = ${AWS_ACCESS_KEY_ID}
-  #   aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY} 
-  #   EOL
-  - chmod 700 ecr_user.sh
-  - ./ecr_user.sh
-  #login ECR
-  - eval $(aws ecr get-login --no-include-email --region us-east-1)
-  #create docker image and push to ECR
-  - ./docker_perserve.sh
-  #deploy latest docker image to EC2
-  - ./deploy_docker.sh
+#read the TAG_ENABLE param
+  - |
+      if [ ${TAG_ENABLE} == T ]; then
+        npm version ${VER_BUMP} -m ${MSG}
+          #build project since there is no error
+        ng build --prod
+        #install docker since the travis docker service version is too old
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        sudo apt-get update
+        apt-cache policy docker-ce
+        sudo apt-get install -y docker-ce
+        #up data pip
+        pip install -U pip
+        #install awscli
+        sudo pip install awscli --upgrade
+        export PATH=~/.local/bin:$PATH
+        #add Aws IAM user credentials to env
+        mkdir -p ~/.aws
+        chmod 700 ecr_user.sh
+        ./ecr_user.sh
+        #login ECR
+        eval $(aws ecr get-login --no-include-email --region us-east-1)
+        #create docker image and push to ECR
+        ./docker_perserve.sh
+        #deploy latest docker image to EC2
+        ./deploy_docker.sh ;
+      else echo "test pass, not update the version, not create a new image, not redeploy the app";
+      fi
+  # #build project since there is no error
+  # - ng build --prod
+  # #install docker since the travis docker service version is too old
+  # - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  # - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
+  #   $(lsb_release -cs) stable"
+  # - sudo apt-get update
+  # - apt-cache policy docker-ce
+  # - sudo apt-get install -y docker-ce
+  # #up data pip
+  # - pip install -U pip
+  # #install awscli
+  # - sudo pip install awscli --upgrade
+  # - export PATH=~/.local/bin:$PATH
+  # #add Aws IAM user credentials to env
+  # - mkdir -p ~/.aws
+  # - chmod 700 ecr_user.sh
+  # - ./ecr_user.sh
+  # #login ECR
+  # - eval $(aws ecr get-login --no-include-email --region us-east-1)
+  # #create docker image and push to ECR
+  # - ./docker_perserve.sh
+  # #deploy latest docker image to EC2
+  # - ./deploy_docker.sh
   - echo "done"
 env:
   global:
