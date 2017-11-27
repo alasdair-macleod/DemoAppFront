@@ -39,37 +39,45 @@ before_script:
   - npm install
 script: 
   - ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
+ 
+      
 after_success:
 #read the TAG_ENABLE param
   - |
     if [ ${TAG_ENABLE} == T ]; then
-        git add .
-        git commit -m ${MSG}
-        npm version ${VER_BUMP} 
-        #build project since there is no error
-        ng build --prod
-        #install docker since the travis docker service version is too old
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-        sudo apt-get update
-        apt-cache policy docker-ce
-        sudo apt-get install -y docker-ce
-        #up data pip
-        pip install -U pip
-        #install awscli
-        sudo pip install awscli --upgrade
-        export PATH=~/.local/bin:$PATH
-        #add Aws IAM user credentials to env
-        mkdir -p ~/.aws
-        chmod 700 ecr_user.sh
-        ./ecr_user.sh
-        #login ECR
-        eval $(aws ecr get-login --no-include-email --region us-east-1)
-        #create docker image and push to ECR
-        ./docker_perserve.sh
-        #deploy latest docker image to EC2
-        ./deploy_docker.sh ;
-      else echo "test pass, not update the version, not create a new image, not redeploy the app";
+      #check if the input is patch, minor, major
+      if[ ${VER_BUMP} != patch -o ${VER_BUMP} != minor -o ${VER_BUMP} != major ]; then 
+        travis_terminate 1
+      fi
+      
+      git add .
+      git commit -m ${MSG}
+      npm version ${VER_BUMP} 
+      #build project since there is no error
+      ng build --prod
+      #install docker since the travis docker service version is too old
+      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+      sudo apt-get update
+      apt-cache policy docker-ce
+      sudo apt-get install -y docker-ce
+      #up data pip
+      pip install -U pip
+      #install awscli
+      sudo pip install awscli --upgrade
+      export PATH=~/.local/bin:$PATH
+      #add Aws IAM user credentials to env
+      mkdir -p ~/.aws
+      chmod 700 ecr_user.sh
+      ./ecr_user.sh
+      #login ECR
+      eval $(aws ecr get-login --no-include-email --region us-east-1)
+      #create docker image and push to ECR
+      ./docker_perserve.sh
+      #deploy latest docker image to EC2
+      ./deploy_docker.sh ;
+    
+    else echo "test pass, not update the version, not create a new image, not redeploy the app";
     fi
   # #build project since there is no error
   # - ng build --prod
