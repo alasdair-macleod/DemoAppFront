@@ -49,7 +49,7 @@ after_success:
       git add .
       git commit -m ${MSG}
       npm version ${VER_BUMP} 
-      git push
+      git push origin HEAD:https://github.com/alexpython1988/DemoAppFront.git 
       #build project since there is no error
       ng build --prod
       #install docker since the travis docker service version is too old
