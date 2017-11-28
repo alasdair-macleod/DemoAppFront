@@ -46,10 +46,11 @@ after_success:
     if [ ${TAG_ENABLE} == T ]; then
       echo start... 
       if [ ${VER_BUMP} != patch -a ${VER_BUMP} != minor -a ${VER_BUMP} != major ]; then travis_terminate 1; fi   
+      git checkout master
       git add .
       git commit -m ${MSG}
       npm version ${VER_BUMP} 
-      git push origin HEAD:https://github.com/alexpython1988/DemoAppFront.git 
+      git push 
       #build project since there is no error
       ng build --prod
       #install docker since the travis docker service version is too old
