@@ -55,8 +55,8 @@ after_success:
       git checkout master
       git add -A
       echo "\"${MSG}"\"
-      git commit -m "\"${MSG}"\"
-      npm version ${VER_BUMP} -m "\"${MSG}"\"
+      git commit -m $(git tag -l | tail -1)
+      npm version ${VER_BUMP} -m "version up data and re-deploy [skip ci]"
       git push origin master
       #build project since there is no error
       ng build --prod
