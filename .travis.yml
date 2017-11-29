@@ -54,8 +54,9 @@ after_success:
       if [ ${VER_BUMP} != patch -a ${VER_BUMP} != minor -a ${VER_BUMP} != major ]; then travis_terminate 1; fi 
       git checkout master
       git add -A
-      git commit -m ${MSG}
-      npm version ${VER_BUMP} -m ${MSG}
+      echo ${MSG}
+      git commit -m "${MSG}"
+      npm version ${VER_BUMP} -m "${MSG}"
       git push origin master
       #build project since there is no error
       ng build --prod
