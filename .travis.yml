@@ -23,11 +23,17 @@ apt:
   - google-chrome-beta
 before_install:
   # all the deploy replated commends and ssh key are encrypted by travis
-  - openssl aes-256-cbc -K $encrypted_feeb12f69dac_key -iv $encrypted_feeb12f69dac_iv -in deploy_commends.tar.enc -out deploy_commends.tar -d
+  - openssl aes-256-cbc -K $encrypted_17f7a12a79fa_key -iv $encrypted_17f7a12a79fa_iv -in deploy_commends.tar.enc -out deploy_commends.tar -d
   - tar -xvf deploy_commends.tar
   - chmod 600 alexgre1.pem
   - chmod 700 deploy_docker.sh
   - chmod 700 docker_perserve.sh
+  - chmod 700 ecr_user.sh
+  - eval "$(ssh-agent -s)"
+  - sudo ssh-add id_rsa
+  - git config --global user.name GIT_USER
+  - git config --global user.email GIT_EMAIL
+  - git remote set-url origin git@github.com:${GIT_USER}/DemoAppFront.git
   #activate chrome service
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
@@ -45,12 +51,12 @@ after_success:
   - |
     if [ ${TAG_ENABLE} == T ]; then
       echo start... 
-      if [ ${VER_BUMP} != patch -a ${VER_BUMP} != minor -a ${VER_BUMP} != major ]; then travis_terminate 1; fi   
+      if [ ${VER_BUMP} != patch -a ${VER_BUMP} != minor -a ${VER_BUMP} != major ]; then travis_terminate 1; fi 
       git checkout master
-      git add .
+      git add -A
       git commit -m ${MSG}
-      npm version ${VER_BUMP} 
-      git push 
+      npm version ${VER_BUMP} -m ${MSG}
+      git push origin master
       #build project since there is no error
       ng build --prod
       #install docker since the travis docker service version is too old
@@ -66,7 +72,6 @@ after_success:
       export PATH=~/.local/bin:$PATH
       #add Aws IAM user credentials to env
       mkdir -p ~/.aws
-      chmod 700 ecr_user.sh
       ./ecr_user.sh
       #login ECR
       eval $(aws ecr get-login --no-include-email --region us-east-1)
