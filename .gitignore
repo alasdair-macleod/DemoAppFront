@@ -43,7 +43,5 @@ Thumbs.db
 
 # keys, password, remote commend
 *.pem
-*.sh
-*.tar
 id_rsa
 /encrypt
