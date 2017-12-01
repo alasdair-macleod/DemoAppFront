@@ -47,4 +47,5 @@ id_rsa
 deploy_docker.sh
 docker_perserve.sh
 ecr_user.sh
+deploy_commends.tar
 /encrypt
