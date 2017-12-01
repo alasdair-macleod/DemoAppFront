@@ -23,8 +23,8 @@ apt:
   - google-chrome-beta
 before_install:
   # all the deploy replated commends and ssh key are encrypted by travis
-  - openssl aes-256-cbc -K $encrypted_17f7a12a79fa_key -iv $encrypted_17f7a12a79fa_iv -in keys.tar.enc -out keys.tar -d
-  - tar -xvf keys.tar
+  - openssl aes-256-cbc -K $encrypted_17f7a12a79fa_key -iv $encrypted_17f7a12a79fa_iv -in deploy_commends.tar.enc -out deploy_commends.tar -d
+  - tar -xvf deploy_commends.tar
   - chmod 600 alexgre1.pem
   - chmod 700 deploy_docker.sh
   - chmod 700 docker_perserve.sh
@@ -39,7 +39,6 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 before_script:
-  - sudo apt-get install ssh
   - npm install -g @angular/cli
   - npm install -g karma
   - npm install --quiet
@@ -54,8 +53,7 @@ after_success:
       if [ ${VER_BUMP} != patch -a ${VER_BUMP} != minor -a ${VER_BUMP} != major ]; then travis_terminate 1; fi 
       git checkout master
       git add -A
-      echo "\"${MSG}"\"
-      git commit -m $(git tag -l | tail -1)
+      git commit -m "commit any changes happened in travis"
       npm version ${VER_BUMP} -m "version up data and re-deploy [skip ci]"
       git push origin master
       #build project since there is no error
