@@ -1,7 +1,7 @@
 notifications:
   email:
     recipients:
-    - alexgre@ufl.edu
+    - alasdair.macleod@ufl.edu
     on_success: always
     on_failure: always
 sudo: required

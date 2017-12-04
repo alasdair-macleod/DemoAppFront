@@ -17,4 +17,4 @@
 
 FROM nginx
 ADD dist /usr/share/nginx/html
-ADD default.conf /etc/nginx/conf.d/
+ADD docker_nginx.conf /etc/nginx/conf.d/
