@@ -7,8 +7,12 @@ describe('demo-app-front App', () => {
     page = new DemoAppFrontPage();
   });
 
-  it('should display welcome message', () => {
+  // default angular test
+  it('should display index page', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(page.getPageTitle()).toEqual('DemoAppFront');
   });
+
+  
+
 });

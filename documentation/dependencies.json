@@ -1,0 +1,713 @@
+[
+  {
+    "name": "AppRoutingModule",
+    "file": "src/app/app-routing-module.ts",
+    "providers": [],
+    "declarations": [],
+    "imports": [
+      {
+        "ns": "RouterModule",
+        "name": "RouterModule.forRoot(args)"
+      }
+    ],
+    "exports": [
+      {
+        "name": "RouterModule"
+      }
+    ],
+    "bootstrap": [],
+    "__raw": [
+      {
+        "kind": 253,
+        "pos": 3130,
+        "end": 3172,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 3130,
+          "end": 3140,
+          "flags": 0,
+          "text": "imports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 3141,
+          "end": 3172,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 174,
+              "pos": 3143,
+              "end": 3171,
+              "flags": 0,
+              "expression": {
+                "kind": 172,
+                "pos": 3143,
+                "end": 3163,
+                "flags": 0,
+                "expression": {
+                  "kind": 69,
+                  "pos": 3143,
+                  "end": 3155,
+                  "flags": 0,
+                  "text": "RouterModule"
+                },
+                "name": {
+                  "kind": 69,
+                  "pos": 3156,
+                  "end": 3163,
+                  "flags": 0,
+                  "text": "forRoot"
+                }
+              },
+              "arguments": [
+                {
+                  "kind": 69,
+                  "pos": 3164,
+                  "end": 3170,
+                  "flags": 0,
+                  "text": "routes"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 3173,
+        "end": 3199,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 3173,
+          "end": 3183,
+          "flags": 0,
+          "text": "exports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 3184,
+          "end": 3199,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 3186,
+              "end": 3198,
+              "flags": 0,
+              "text": "RouterModule"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "AppModule",
+    "file": "src/app/app.module.ts",
+    "providers": [
+      {
+        "name": "MathJaxService"
+      }
+    ],
+    "declarations": [
+      {
+        "name": "AppComponent",
+        "file": "src/app/app.component.ts",
+        "selector": "app-root",
+        "providers": [],
+        "templateUrl": [
+          "app.component.html"
+        ],
+        "styleUrls": [
+          "app.component.css"
+        ],
+        "__raw": [
+          {
+            "kind": 253,
+            "pos": 173,
+            "end": 196,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 173,
+              "end": 184,
+              "flags": 0,
+              "text": "selector"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 185,
+              "end": 196,
+              "flags": 0,
+              "text": "app-root"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 197,
+            "end": 235,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 197,
+              "end": 211,
+              "flags": 0,
+              "text": "templateUrl"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 212,
+              "end": 235,
+              "flags": 0,
+              "text": "./app.component.html"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 236,
+            "end": 273,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 236,
+              "end": 248,
+              "flags": 0,
+              "text": "styleUrls"
+            },
+            "initializer": {
+              "kind": 170,
+              "pos": 249,
+              "end": 273,
+              "flags": 0,
+              "elements": [
+                {
+                  "kind": 9,
+                  "pos": 251,
+                  "end": 272,
+                  "flags": 0,
+                  "text": "./app.component.css"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "MathJaxComponent"
+      },
+      {
+        "name": "MathJaxDirective"
+      },
+      {
+        "name": "UserModeComponent"
+      },
+      {
+        "name": "StudyFormComponent"
+      },
+      {
+        "name": "TargetEventComponent"
+      },
+      {
+        "name": "SolveForComponent"
+      },
+      {
+        "name": "StatisticalTestsComponent"
+      },
+      {
+        "name": "TypeOneErrorComponent"
+      },
+      {
+        "name": "CorrelationMatrixComponent"
+      },
+      {
+        "name": "WithinIsuOutcomesComponent"
+      },
+      {
+        "name": "WithinIsuRepeatedMeasuresComponent"
+      },
+      {
+        "name": "WithinIsuClustersComponent"
+      },
+      {
+        "name": "BetweenIsuPredictorsComponent"
+      },
+      {
+        "name": "BetweenIsuGroupsComponent"
+      },
+      {
+        "name": "GaussianCovariateComponent"
+      },
+      {
+        "name": "HypothesisEffectChoiceComponent"
+      },
+      {
+        "name": "HypothesisBetweenComponent"
+      },
+      {
+        "name": "HypothesisWithinComponent"
+      },
+      {
+        "name": "ParametersMarginalMeansComponent"
+      },
+      {
+        "name": "ParametersScaleFactorComponent"
+      },
+      {
+        "name": "ParametersStandardDeviationComponent"
+      }
+    ],
+    "imports": [
+      {
+        "ns": "LoggerModule",
+        "name": "LoggerModule.forRoot(args)"
+      },
+      {
+        "ns": "BsDropdownModule",
+        "name": "BsDropdownModule.forRoot()"
+      },
+      {
+        "name": "BrowserModule"
+      },
+      {
+        "name": "ReactiveFormsModule"
+      },
+      {
+        "name": "HttpModule"
+      },
+      {
+        "name": "BrowserAnimationsModule"
+      },
+      {
+        "name": "AppRoutingModule"
+      }
+    ],
+    "exports": [],
+    "bootstrap": [
+      {
+        "name": "AppComponent"
+      }
+    ],
+    "__raw": [
+      {
+        "kind": 253,
+        "pos": 2548,
+        "end": 3235,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 2548,
+          "end": 2563,
+          "flags": 0,
+          "text": "declarations"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 2564,
+          "end": 3235,
+          "flags": 0,
+          "multiLine": true,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 2566,
+              "end": 2583,
+              "flags": 0,
+              "text": "AppComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2584,
+              "end": 2605,
+              "flags": 0,
+              "text": "MathJaxComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2606,
+              "end": 2627,
+              "flags": 0,
+              "text": "MathJaxDirective"
+            },
+            {
+              "kind": 69,
+              "pos": 2628,
+              "end": 2650,
+              "flags": 0,
+              "text": "UserModeComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2651,
+              "end": 2674,
+              "flags": 0,
+              "text": "StudyFormComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2675,
+              "end": 2700,
+              "flags": 0,
+              "text": "TargetEventComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2701,
+              "end": 2723,
+              "flags": 0,
+              "text": "SolveForComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2724,
+              "end": 2754,
+              "flags": 0,
+              "text": "StatisticalTestsComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2755,
+              "end": 2781,
+              "flags": 0,
+              "text": "TypeOneErrorComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2782,
+              "end": 2813,
+              "flags": 0,
+              "text": "CorrelationMatrixComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2814,
+              "end": 2845,
+              "flags": 0,
+              "text": "WithinIsuOutcomesComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2846,
+              "end": 2885,
+              "flags": 0,
+              "text": "WithinIsuRepeatedMeasuresComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2886,
+              "end": 2917,
+              "flags": 0,
+              "text": "WithinIsuClustersComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2918,
+              "end": 2952,
+              "flags": 0,
+              "text": "BetweenIsuPredictorsComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2953,
+              "end": 2983,
+              "flags": 0,
+              "text": "BetweenIsuGroupsComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 2984,
+              "end": 3015,
+              "flags": 0,
+              "text": "GaussianCovariateComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 3016,
+              "end": 3052,
+              "flags": 0,
+              "text": "HypothesisEffectChoiceComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 3053,
+              "end": 3084,
+              "flags": 0,
+              "text": "HypothesisBetweenComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 3085,
+              "end": 3115,
+              "flags": 0,
+              "text": "HypothesisWithinComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 3116,
+              "end": 3153,
+              "flags": 0,
+              "text": "ParametersMarginalMeansComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 3154,
+              "end": 3189,
+              "flags": 0,
+              "text": "ParametersScaleFactorComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 3190,
+              "end": 3231,
+              "flags": 0,
+              "text": "ParametersStandardDeviationComponent"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 3236,
+        "end": 3501,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 3236,
+          "end": 3246,
+          "flags": 0,
+          "text": "imports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 3247,
+          "end": 3501,
+          "flags": 0,
+          "multiLine": true,
+          "elements": [
+            {
+              "kind": 174,
+              "pos": 3249,
+              "end": 3354,
+              "flags": 0,
+              "expression": {
+                "kind": 172,
+                "pos": 3249,
+                "end": 3274,
+                "flags": 0,
+                "expression": {
+                  "kind": 69,
+                  "pos": 3249,
+                  "end": 3266,
+                  "flags": 0,
+                  "text": "LoggerModule"
+                },
+                "name": {
+                  "kind": 69,
+                  "pos": 3267,
+                  "end": 3274,
+                  "flags": 0,
+                  "text": "forRoot"
+                }
+              },
+              "arguments": [
+                {
+                  "kind": 171,
+                  "pos": 3275,
+                  "end": 3352,
+                  "flags": 0,
+                  "properties": [
+                    {
+                      "kind": 253,
+                      "pos": 3276,
+                      "end": 3322,
+                      "flags": 0,
+                      "name": {
+                        "kind": 69,
+                        "pos": 3276,
+                        "end": 3292,
+                        "flags": 0,
+                        "text": "serverLoggingUrl"
+                      },
+                      "initializer": {
+                        "kind": 172,
+                        "pos": 3293,
+                        "end": 3322,
+                        "flags": 0,
+                        "expression": {
+                          "kind": 69,
+                          "pos": 3293,
+                          "end": 3305,
+                          "flags": 0,
+                          "text": "environment"
+                        },
+                        "name": {
+                          "kind": 69,
+                          "pos": 3306,
+                          "end": 3322,
+                          "flags": 0,
+                          "text": "serverLoggingUrl"
+                        }
+                      }
+                    },
+                    {
+                      "kind": 253,
+                      "pos": 3323,
+                      "end": 3351,
+                      "flags": 0,
+                      "name": {
+                        "kind": 69,
+                        "pos": 3323,
+                        "end": 3329,
+                        "flags": 0,
+                        "text": "level"
+                      },
+                      "initializer": {
+                        "kind": 172,
+                        "pos": 3330,
+                        "end": 3351,
+                        "flags": 0,
+                        "expression": {
+                          "kind": 69,
+                          "pos": 3330,
+                          "end": 3342,
+                          "flags": 0,
+                          "text": "environment"
+                        },
+                        "name": {
+                          "kind": 69,
+                          "pos": 3343,
+                          "end": 3351,
+                          "flags": 0,
+                          "text": "loglevel"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": 174,
+              "pos": 3355,
+              "end": 3386,
+              "flags": 0,
+              "expression": {
+                "kind": 172,
+                "pos": 3355,
+                "end": 3384,
+                "flags": 0,
+                "expression": {
+                  "kind": 69,
+                  "pos": 3355,
+                  "end": 3376,
+                  "flags": 0,
+                  "text": "BsDropdownModule"
+                },
+                "name": {
+                  "kind": 69,
+                  "pos": 3377,
+                  "end": 3384,
+                  "flags": 0,
+                  "text": "forRoot"
+                }
+              },
+              "arguments": []
+            },
+            {
+              "kind": 69,
+              "pos": 3387,
+              "end": 3405,
+              "flags": 0,
+              "text": "BrowserModule"
+            },
+            {
+              "kind": 69,
+              "pos": 3406,
+              "end": 3430,
+              "flags": 0,
+              "text": "ReactiveFormsModule"
+            },
+            {
+              "kind": 69,
+              "pos": 3431,
+              "end": 3446,
+              "flags": 0,
+              "text": "HttpModule"
+            },
+            {
+              "kind": 69,
+              "pos": 3447,
+              "end": 3475,
+              "flags": 0,
+              "text": "BrowserAnimationsModule"
+            },
+            {
+              "kind": 69,
+              "pos": 3476,
+              "end": 3497,
+              "flags": 0,
+              "text": "AppRoutingModule"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 3502,
+        "end": 3532,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 3502,
+          "end": 3514,
+          "flags": 0,
+          "text": "providers"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 3515,
+          "end": 3532,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 3517,
+              "end": 3531,
+              "flags": 0,
+              "text": "MathJaxService"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 3533,
+        "end": 3561,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 3533,
+          "end": 3545,
+          "flags": 0,
+          "text": "bootstrap"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 3546,
+          "end": 3561,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 3548,
+              "end": 3560,
+              "flags": 0,
+              "text": "AppComponent"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

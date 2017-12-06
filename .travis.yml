@@ -33,7 +33,7 @@ before_install:
   - sudo ssh-add ${GIT_SSH_KEY}
   - git config --global user.name GIT_USER
   - git config --global user.email GIT_EMAIL
-  - git remote set-url origin git@github.com:${GIT_USER}/DemoAppFront.git
+  - git remote set-url origin git@github.com:${GIT_USER}/${GIT_REPO}.git
   #activate chrome service
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
