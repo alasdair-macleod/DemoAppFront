@@ -1,0 +1,117 @@
+{
+    "_isuFactors": {
+        "variables": [
+            {
+                "valueNames": [],
+                "name": "Outcome1",
+                "inHypothesis": false,
+                "nature": "Within",
+                "origin": "Outcome",
+                "standardDeviation": 1
+            },
+            {
+                "valueNames": [],
+                "name": "Outcome2",
+                "inHypothesis": false,
+                "nature": "Within",
+                "origin": "Outcome",
+                "standardDeviation": 1
+            },
+            {
+                "valueNames": [
+                    0,
+                    1
+                ],
+                "inHypothesis": false,
+                "nature": "Within",
+                "origin": "Repeated Measure",
+                "units": "Units1",
+                "type": "Numeric",
+                "noRepeats": 2,
+                "name": "RepeatedMeasure1"
+            },
+            {
+                "valueNames": [
+                    0,
+                    2,
+                    4,
+                    6
+                ],
+                "inHypothesis": false,
+                "nature": "Within",
+                "origin": "Repeated Measure",
+                "units": "Units2",
+                "type": "Numeric",
+                "noRepeats": 4,
+                "name": "RepeatedMeasure2"
+            },
+            {
+                "valueNames": [],
+                "inHypothesis": false,
+                "elementName": "Cluster1",
+                "levels": [
+                    {
+                        "levelName": "Level1",
+                        "noElements": 1
+                    },
+                    {
+                        "levelName": "Level2",
+                        "noElements": 2
+                    }
+                ]
+            },
+            {
+                "valueNames": [
+                    "4",
+                    "5",
+                    "6"
+                ],
+                "inHypothesis": false,
+                "nature": "Between",
+                "origin": "Between ISU Predictor",
+                "name": "BetweenPredictor1",
+                "child": null
+            },
+            {
+                "valueNames": [
+                    "7",
+                    "8",
+                    "9"
+                ],
+                "inHypothesis": false,
+                "nature": "Between",
+                "origin": "Between ISU Predictor",
+                "name": "Between Predictor2",
+                "child": {
+                    "valueNames": [
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "inHypothesis": false,
+                    "nature": "Between",
+                    "origin": "Between ISU Predictor",
+                    "name": "BetweenPredictor1",
+                    "child": null
+                }
+            }
+        ],
+        "betweenIsuRelativeGroupSizes": {},
+        "marginalMeans": {},
+        "smallestGroupSize": []
+    },
+    "_targetEvent": "REJECTION",
+    "_solveFor": "SAMPLESIZE",
+    "_samplesize": 10,
+    "_ciwidth": 1,
+    "_power": 0.5,
+    "_selectedTests": [
+        "Hotelling Lawley Trace"
+    ],
+    "_typeOneErrorRate": 0.05,
+    "_gaussianCovariate": {
+        "variance": 1
+    },
+    "_withinHypothesisNature": "GLOBAL_TRENDS",
+    "_betweenHypothesisNature": "GLOBAL_TRENDS"
+}

@@ -64,6 +64,6 @@
         <i class="material-icons" *ngIf="hasNext" (click)="next()" (keyup.ArrowRight)="next()" style="font-size: 192px; opacity: 0.4;" id="navigate_next" [class.disabled]="!valid">navigate_next</i>
       </div>
     </div>
-
+    {{ study | json }}
   </div>
 <hr>

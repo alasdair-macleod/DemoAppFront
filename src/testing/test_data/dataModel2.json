@@ -1,0 +1,128 @@
+{
+  "_isuFactors": {
+    "variables": [
+      {
+        "valueNames": [],
+        "name": "Outcome 1",
+        "inHypothesis": false,
+        "nature": "Within",
+        "origin": "Outcome",
+        "standardDeviation": 1
+      },
+      {
+        "valueNames": [],
+        "name": "Outcome 2",
+        "inHypothesis": false,
+        "nature": "Within",
+        "origin": "Outcome",
+        "standardDeviation": 1
+      },
+      {
+        "valueNames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "inHypothesis": false,
+        "nature": "Within",
+        "origin": "Repeated Measure",
+        "units": "Days",
+        "type": "Numeric",
+        "noRepeats": 7,
+        "name": "Time"
+      },
+      {
+        "valueNames": [
+          0,
+          1
+        ],
+        "inHypothesis": true,
+        "nature": "Within",
+        "origin": "Repeated Measure",
+        "units": "Metres",
+        "type": "Numeric",
+        "noRepeats": 2,
+        "name": "Distance",
+        "child": null
+      },
+      {
+        "valueNames": [
+          "m",
+          "f"
+        ],
+        "inHypothesis": true,
+        "nature": "Between",
+        "origin": "Between ISU Predictor",
+        "name": "Sex",
+        "child": {
+          "valueNames": [
+            0,
+            1
+          ],
+          "inHypothesis": true,
+          "nature": "Within",
+          "origin": "Repeated Measure",
+          "units": "Metres",
+          "type": "Numeric",
+          "noRepeats": 2,
+          "name": "Distance",
+          "child": null
+        }
+      },
+      {
+        "valueNames": [
+          "100m",
+          "200m",
+          "10000m"
+        ],
+        "inHypothesis": false,
+        "nature": "Between",
+        "origin": "Between ISU Predictor",
+        "name": "Race",
+        "child": {
+          "valueNames": [
+            "m",
+            "f"
+          ],
+          "inHypothesis": true,
+          "nature": "Between",
+          "origin": "Between ISU Predictor",
+          "name": "Sex",
+          "child": {
+            "valueNames": [
+              0,
+              1
+            ],
+            "inHypothesis": true,
+            "nature": "Within",
+            "origin": "Repeated Measure",
+            "units": "Metres",
+            "type": "Numeric",
+            "noRepeats": 2,
+            "name": "Distance",
+            "child": null
+          }
+        }
+      }
+    ],
+    "betweenIsuRelativeGroupSizes": {},
+    "marginalMeans": {},
+    "smallestGroupSize": 1
+  },
+  "_targetEvent": "REJECTION",
+  "_solveFor": "SAMPLESIZE",
+  "_samplesize": 10,
+  "_ciwidth": 1,
+  "_power": 0.5,
+  "_selectedTests": [
+    "Hotelling Lawley Trace"
+  ],
+  "_typeOneErrorRate": 0.05,
+  "_gaussianCovariate": null,
+  "_withinHypothesisNature": "GLOBAL_TRENDS",
+  "_betweenHypothesisNature": "GLOBAL_TRENDS"
+}

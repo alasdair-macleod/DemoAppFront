@@ -1,0 +1,142 @@
+{
+    "uuid": [],
+    "name": null,
+    "gaussianCovariate": false,
+    "solutionTypeEnum": "POWER",
+    "participantLabel": null,
+    "viewTypeEnum": "GUIDED_MODE",
+    "confidenceIntervalDescriptions": null,
+    "powerCurveDescriptions": null,
+    "alphaList": [
+        {
+            "idx": 0,
+            "alphaValue": 0.01
+        },
+        {
+            "idx": 1,
+            "alphaValue": 0.05
+        },
+        {
+            "idx": 2,
+            "alphaValue": 0.1
+        }
+    ],
+    "betaScaleList": [
+        {
+            "idx": 0,
+            "value": 0.5
+        },
+        {
+            "idx": 1,
+            "value": 1
+        },
+        {
+            "idx": 2,
+            "value": 2
+        }
+    ],
+    "sigmaScaleList": [
+        {
+            "idx": 0,
+            "value": 0.5
+        },
+        {
+            "idx": 1,
+            "value": 1
+        },
+        {
+            "idx": 2,
+            "value": 2
+        }
+    ],
+    "relativeGroupSizeList": [],
+    "sampleSizeList": [
+        {
+            "idx": 0,
+            "value": 5
+        },
+        {
+            "idx": 1,
+            "value": 10
+        }
+    ],
+    "statisticalTestList": [
+        {
+            "idx": "0",
+            "type": "UNIREP"
+        }
+    ],
+    "powerMethodList": [],
+    "quantileList": [],
+    "nominalPowerList": [],
+    "responseList": [
+        {
+            "idx": 0,
+            "name": "KI-67"
+        }
+    ],
+    "betweenParticipantFactorList": [],
+    "repeatedMeasuresTree": [],
+    "clusteringTree": [],
+    "hypothesis": [
+        {
+            "idx": 1,
+            "type": "GRAND_MEAN",
+            "betweenParticipantFactorMapList": [],
+            "repeatedMeasuresMapTree": []
+        }
+    ],
+    "covariance": [
+        {
+            "idx": 0,
+            "type": "UNSTRUCTURED_CORRELATION",
+            "name": "__RESPONSE_COVARIANCE__",
+            "standardDeviationList": [
+                {
+                    "idx": 0,
+                    "value": 25
+                }
+            ],
+            "rho": -2,
+            "delta": -1,
+            "scale": false,
+            "rows": 1,
+            "columns": 1,
+            "blob": {
+                "data": [
+                    [
+                        1
+                    ]
+                ]
+            }
+        }
+    ],
+    "matrixSet": [
+        {
+            "idx": 0,
+            "name": "beta",
+            "rows": 1,
+            "columns": 1,
+            "data": {
+                "data": [
+                    [
+                        10
+                    ]
+                ]
+            }
+        },
+        {
+            "idx": 0,
+            "name": "thetaNull",
+            "rows": 1,
+            "columns": 1,
+            "data": {
+                "data": [
+                    [
+                        0
+                    ]
+                ]
+            }
+        }
+    ]
+}
