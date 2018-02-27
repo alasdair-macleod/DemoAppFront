@@ -1,31 +1,89 @@
+notifications:
+  email:
+    recipients:
+    - alasdair.macleod@ufl.edu
+    on_success: always
+    on_failure: always
 sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - '6.11.0'
-
+- 8.7.0
 branches:
   only:
-    - master
-
+  - master
+  - build
 addons:
   chrome: stable
 apt:
   sources:
-    - google-chrome
+  - google-chrome
   packages:
-    - google-chrome-stable
-    - google-chrome-beta
-
+  - google-chrome-stable
+  - google-chrome-beta
 before_install:
+  # all the deploy replated commends and ssh key are encrypted by travis
+  - openssl aes-256-cbc -K $encrypted_17f7a12a79fa_key -iv $encrypted_17f7a12a79fa_iv -in deploy_commends.tar.enc -out deploy_commends.tar -d
+  - tar -xvf deploy_commends.tar
+  - chmod 600 alexgre1.pem
+  - chmod 700 deploy_docker.sh
+  - chmod 700 docker_perserve.sh
+  - chmod 700 ecr_user.sh
+  - eval "$(ssh-agent -s)"
+  - sudo ssh-add ${GIT_SSH_KEY}
+  - git config --global user.name GIT_USER
+  - git config --global user.email GIT_EMAIL
+  - git remote set-url origin git@github.com:${GIT_USER}/DemoAppFront.git
+  #activate chrome service
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-
 before_script:
-- npm install -g @angular/cli
-- npm install -g karma
-- npm install
-- ng build
-
-sctipt: ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
+  - npm install -g @angular/cli
+  - npm install -g karma
+  - npm install --quiet
+script: 
+  - ./node_modules/.bin/karma start karma.conf.js --single-run --log-level=DEBUG
+      
+after_success:
+#read the TAG_ENABLE param
+  - |
+    if [ ${TAG_ENABLE} == T ]; then
+      echo start... 
+      if [ ${VER_BUMP} != patch -a ${VER_BUMP} != minor -a ${VER_BUMP} != major ]; then travis_terminate 1; fi 
+      git checkout master
+      git add -A
+      git commit -m "commit any changes happened in travis"
+      npm version ${VER_BUMP} -m "version up data and re-deploy [skip ci]"
+      git push origin master
+      #build project since there is no error
+      ng build --prod
+      #install docker since the travis docker service version is too old
+      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+      sudo apt-get update
+      apt-cache policy docker-ce
+      sudo apt-get install -y docker-ce
+      #up data pip
+      pip install -U pip
+      #install awscli
+      sudo pip install awscli --upgrade
+      export PATH=~/.local/bin:$PATH
+      #add Aws IAM user credentials to env
+      mkdir -p ~/.aws
+      ./ecr_user.sh
+      #login ECR
+      eval $(aws ecr get-login --no-include-email --region us-east-1)
+      #create docker image and push to ECR
+      ./docker_perserve.sh
+      #deploy latest docker image to EC2
+      ./deploy_docker.sh ;
+      
+    else echo "test pass, not update the version, not create a new image, not redeploy the app";
+    fi
+ 
+  - echo "done"
+env:
+  global:
+  - secure: ecn53heIuRof/us5LEaSifTZwqQuRgQDVZXjzomm1mlywx3AeKuY1iGyQ/6s2p10V9B/zEI1kIJxxNR6YzIWxPpFYp9DlJs0usDUsZAEmL4osgWrfh1QzqdWJixqLc7IjjoXTfzArPMXcBJJxQehrl3xRu7CWO7raG1psZ9p9nZVygyJ+c6iMu8DURvXQnLLXGZlcrnsvBjUThHaNysAELwXQ2VHhRGP75PSqqkbmcEuzoOCBps4ftvPO9GDnSt+4qxB7A18Xp+XXlPldmzW/60ZdUpD+2TN6wLbzX2UcFBJzv/bNIEbLgQLhwu6Aeh4QtCc9NzsKJAkUVUceXQOqTUKgV9Za0V5xS3DgmognPDanj38AkkZg065tzpbbaP3/jlSEtbO7RtClY1iXpvdcpiaxYe8W/CtuMuGeBK8IfDdqsgAfbTOW0QjDE4fvCV8bY43e4F6qCrjiDDutkWrXZKtEryKZkE7C1ysRgh6q2kMkdlX3kcpqm9cpe3t6wgEZ+hph1EvANBJbhpmcHQOsFRv2IS9KvQoH2jYlqsmWh2t2IAfqEF0kDLPA1YXfJEHC87+yZsJ3ipn8i640y9kNYTxWFTFE9xo/l4B3I+0pRpH4zh/4f9+Y+rgmfk98qhRli1+M6Hgr+s7Fen+kGh9LcF+Vz8fLkItIkpG9deW1ck=
+  - secure: f6I/J8BwRV5tz35+GOJMyCSChQZ2Y4eETGlbsefUEEMBcVF8gz1SminzrWs4wPkidx8Kgkk2JJkhWSSspnfzVqdxl8eE/8I8aV81GCFktqMiV9t//xXRtvd6SsgFRIfZthE12T59bgx7W9Ybikvf8RABkclSdRVjKMl9BQcTvauKbMU9CZaeuVkBrOZpCIG1sIqeRcLMNEIGArnaApFee9+tnT7AEJqt6tBSZN3notdUvshrSeH79l8Cqc1C22e5/L2OoeB84aWcWgH6MN7FroCXDiE1S8Y1X0cEN6LmWds5uZFlhaz9NEjLoKxpRrqU9T7L2MTXlJZz/Auz8BkjmXnoSjVH1soLs6B9OtNT0a0uo4lgKvUjoBUCmVEJJZEYQrD8Veo1YevLPBcJdQTVUx/hFKPio6uuOntkcclIEytHaThT9g2CEEQNSFvlAuvaT/uBFqicEdXOrvS93SFwsk4L0ZMb0AdNRAklfPiabHmc4HkJE65c1rgifY9OXVOUrdF6QSR6F9VEn48GbjOHWBiZJaUBY8sbsPNESsC7uL6f740PAQheRWqaqrkucPwX1FAG9ZKcQNK/u6AaHGDn8vZVfeEAwJb4o6GPM2rhYS98763mvJHBwC+Cttebc9+TPCB9LLu7vU9q0RTyurEsSfLH/x4qIj1tS/G5afpBmog=
