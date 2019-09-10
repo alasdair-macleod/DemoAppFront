@@ -55,6 +55,7 @@ jobs:
       - git config --global user.email GIT_EMAIL
       - git remote set-url origin git@github.com:${GIT_USER}/${GIT_REPO}.git
       - sudo pip install --upgrade pip
+      - npm config set sign-git-tag true
       - npm version $BUILD_TYPE -m "updating version to %s"
       - ng build --no-aot --no-build-optimizer
       - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
