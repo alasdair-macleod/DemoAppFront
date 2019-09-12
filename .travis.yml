@@ -54,8 +54,8 @@ jobs:
       - sudo ssh-add ${GIT_SSH_KEY}
       - git config --global user.name GIT_USER
       - git config --global user.email GIT_EMAIL
-      - git remote set-url origin git@github.com:${GIT_USER}/${GIT_REPO}.git
-#      - git remote set-url origin https://github.com/${GIT_USER}/${GIT_REPO}.git
+#      - git remote set-url origin git@github.com:${GIT_USER}/${GIT_REPO}.git
+      - git remote set-url origin https://github.com/${GIT_USER}/${GIT_REPO}.git
       - sudo pip install --upgrade pip
       - npm config set git-tag-version true
       - npm version $BUILD_TYPE -m "updating version to %s"
