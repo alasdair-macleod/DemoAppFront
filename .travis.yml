@@ -58,7 +58,7 @@ jobs:
       - sudo pip install --upgrade pip
       - npm config set git-tag-version true
       - npm version $BUILD_TYPE -m "updating version to %s"
-      - git commit -m "commiting tagged version"
+      - npm git-tag-version
 #      - ng build --no-aot --no-build-optimizer
 #      - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 #      - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
