@@ -55,12 +55,13 @@ jobs:
       - git config --global user.name GIT_USER
       - git config --global user.email GIT_EMAIL
       - git remote set-url origin git@github.com:${GIT_USER}/${GIT_REPO}.git
+      - git remote add origin git@github.com:${GIT_USER}/${GIT_REPO}.git
       - sudo pip install --upgrade pip
       - npm config set git-tag-version true
       - npm version $BUILD_TYPE -m "updating version to %s"
       - git show-ref
       - git push --tags origin VER3-546_updateBuild
-      - npm publish
+#      - npm publish
 #      - ng build --no-aot --no-build-optimizer
 #      - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 #      - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
