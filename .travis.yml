@@ -36,7 +36,6 @@ jobs:
     - git --version
     - ls -lrt ./scripts/*.sh
     - eval "$(ssh-agent -s)"
-    - sudo ssh-add ${GIT_SSH_KEY}
     - git config --global user.name GIT_USER
     - git config --global user.email GIT_EMAIL
     - git remote set-url origin https://${GH_TOKEN}@github.com/${GIT_USER}/${GIT_REPO}.git
