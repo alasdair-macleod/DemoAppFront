@@ -39,7 +39,6 @@ jobs:
     - sudo ssh-add ${GIT_SSH_KEY}
     - git config --global user.name GIT_USER
     - git config --global user.email GIT_EMAIL
-    - git config --global user.email GH_TOKEN
     - git remote set-url origin https://${GH_TOKEN}@github.com/${GIT_USER}/${GIT_REPO}.git
     - sudo pip install --upgrade pip
     - npm config set git-tag-version true
