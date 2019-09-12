@@ -51,7 +51,7 @@ jobs:
 #      - chmod 600 glimmpsev3uat.pem
 #      - chmod 600 id_rsa
       - eval "$(ssh-agent -s)"
-#      - sudo ssh-add ${GIT_SSH_KEY}
+      - sudo ssh-add ${GIT_SSH_KEY}
       - git config --global user.name GIT_USER
       - git config --global user.email GIT_EMAIL
       - git remote set-url origin git@github.com:${GIT_USER}/${GIT_REPO}.git
