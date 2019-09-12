@@ -58,6 +58,7 @@ jobs:
       - sudo pip install --upgrade pip
       - npm config set git-tag-version true
       - npm version $BUILD_TYPE -m "updating version to %s"
+      - git commit
       - git push —-tags origin master
       - npm publish
 #      - ng build --no-aot --no-build-optimizer
