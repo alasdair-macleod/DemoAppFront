@@ -17,16 +17,13 @@ apt:
   - google-chrome-beta
 env:
   global:
-  - EC2_SSH_KEY=glimmpsev3uat.pem
-    GIT_SSH_KEY=id_rsa
-    EC2_URL=ec2-54-161-9-34.compute-1.amazonaws.com
-    REPO=543872078551.dkr.ecr.us-east-1.amazonaws.com
-    IMAGE=glimmpse
-    GIT_MAIL=alasdair.macleod@ufl.edu
-    GIT_USER=alasdair-macleod
-    GIT_REPO=DemoAppFront
+  - EC2_SSH_KEY=glimmpsev3uat.pem GIT_SSH_KEY=id_rsa EC2_URL=ec2-54-161-9-34.compute-1.amazonaws.com
+    REPO=543872078551.dkr.ecr.us-east-1.amazonaws.com IMAGE=glimmpse GIT_MAIL=alasdair.macleod@ufl.edu
+    GIT_USER=alasdair-macleod GIT_REPO=DemoAppFront
   - secure: OUuPL0s2awbQleStHL9y184yXCz7pekS+iQx1EBwlbM0LVUI3JGvTl3oGSn7HiOLtNxfO2L69hEPxg1+FgIR6w1rMUSZV7bOqe3kuJmDaRXmiHGU/YB+jnNjB02dzPGyLse6TtCVs6K4dXCo28mfK7MUD9ifxCJ2I9lNXTLhvVnC0Y/nhXKJ+s10X8wkfsn19Jm1VOLvOjADQ+sm3RwZYvDBiBlw0xVa5IT75s5AiFTir+QGdYGI9MZGVoh/S7Hgeuzx0T6Z26F1IqFXKQesyxM1lC6EyBSpH/jArn4dtgt0cbI6ZvATP/3njwDBoFOe+dh8e50Gi2mYxE4pf9dZWqwUDFOP0JQ7e67zFnMKYbmon6jRuwIWBh2tECeYCCE1B7qSa0Y3WDvlB/IZrvm0d7FuHYpAUGPGBE/RRShCpc6VoC/9HQrLHlnv4sa3giAiNZNGDGKu0CQ16hGaAu35f9694Ma6XCmdkRBDYQQpAxAbNXMimLpL3cmGbkS0sYThWmooZ/20GXFcbEMBWk5aqHy40VKx3KrhzGtS+4Wp5SEWbKatQcDS2MafPmwJUv/l98oHo3OAMPEgrkT32aS+tP1NMiEIqZ2BHvjjF2jW1yhAl2nvBU7WNr2+5wfeQC4vrGTlPnAS8U9lUraIRHQjsggqQheHhSgtb6MTE84jt9Y=
   - secure: l/WXQ7E3gJ31rV10pnhmi9tX3B3JvpsMmedLTMa9HXPmPhYz34KUS1yz+6I+dUorP+nkA8IMZc88rnPW1BCHVtxLKoUFfZbd+GF1BiDmVBA4MEaxddpOUJMJ2vAgIeRJ7QXtXzuU9/KwP/0Irktnk8/AukBPm7jB3hYiovQFPdxqZqetAEZm2yWxsNZ5hZTS6+yPRhuZFO+qg5A7k9PkYdPIKs6hqaX/wnwu28qTNv7RHqyS4YyD0GX41pJrq5SuNFf5SIoLp9iy8nTZ/+/LuqaBXqnendZzcaDmJP2illw7Jh2oNmlCt/0q1uAWENxTOApvy4qTx538obE7whUTOCH/Kexse3gqR7XL35S96J6HuMVf4IrPERGVYB0MGq2rVhYUuj9outUpVjxz8BlfQa+AQimC4qBmR/MyduZZvtaF0FW9ZJl+NrPIl9NOXstEllSijiuo1qY/zdgu2PFL65suaMsdyk7AVAhBa46Njzu7dMm5BTV8G5wZ1YuZ+MFIJMiwJsCMDdsRriMtLYGv2OqxZqXn4Jv89JLjxFpyiWI6lyrqRMMGKeLY7AxXKwunELS4V1pD0hLPw2Y/eZbo77eHyUnq0JIn/53nqM/WNvTqJt9ixoQDd2D7ksHh6DynvC6Tw7Adpmk8AgUSQsVHLadoKSa5wFImcUlMfh9PqoM=
+  - secure: Uywg/f8f0pgBaVFMY8fwn08upTvzZX+Sk4X1cbNnKs8PQKnoRuCWPVS27u0aCmV+Zjyuftn7dfJ93RM/+IaPG3i8TGIKpjffpMUG8/GNbfCg6r9a2KWXgf0XxDCeSQ31Fj6X2lLO5Gi3vMY9VfwNKXn5two/S4jJFS6aUuWeLcu2VKUl26QMxj7lrXgAYuxY5X0vu+BPCh/x2nbaDGnROgZ9UmYcrQnJ5ei2y89WDd3aqVJ1QrcsNVSNzVfHKUSokEv1ORoIde+dACCC/8/Om3Ht5CTDCjO1TXlWUjMkMuUA+NdmU4DmA38BLlPCvktVgH39GdUywTMjFoAPg1UQ0EnUZ5MReMBy7Oh//HdF/PeI2JirEWeiAWcESxqxwToagwMVINZmKf5xU7spt0Weedie9SFN9hrs5/wfXMxnmv1X3qOseV7j7839l8VyO5pqzgBoW5kLNLGg/rfhybJ68C9g5URWmOsi6JfvdXrIx6MuUvLaVR8bdX4tuzhGsU8HHXqCHAMWUQZzBX+c/0TyI+gZXJseRLavWMzonocDPZSuC360+pN6d3rL4/l3xaRttBXZzv1ifLulKZW9X6FZCBcDZi13ombhL1udwe4HU9GdH5N6w6PCHaAu09/x90/mYIPdx4UtvSlKVVDFFNws/zfSKFK1UHE+JbiSpihy220=
+
 before_script:
 - npm cache verify
 - npm config set loglevel warn
@@ -34,47 +31,20 @@ before_script:
 - npm install
 jobs:
   include:
-#    - stage: test
-#      script:
-#      - npm install --save @ng-bootstrap/ng-bootstrap@4.0.0
-#      - npm install -g karma
-#      - export CHROME_BIN=chromium-browser
-#      - export DISPLAY=:99.0
-#      - sh -e /etc/init.d/xvfb start
-#      - ng test
-    - stage: build
-      script:
-      - git --version
-#      - openssl aes-256-cbc -K $encrypted_ac40f3edab40_key -iv $encrypted_ac40f3edab40_iv -in secret_keys.tar.enc -out secret_keys.tar -d
-      - ls -lrt ./scripts/*.sh
-#      - tar xvf secret_keys.tar
-#      - chmod 600 glimmpsev3uat.pem
-#      - chmod 600 id_rsa
-      - eval "$(ssh-agent -s)"
-      - sudo ssh-add ${GIT_SSH_KEY}
-      - git config --global user.name GIT_USER
-      - git config --global user.email GIT_EMAIL
-#      - git remote set-url origin git@github.com:${GIT_USER}/${GIT_REPO}.git
-      - git remote set-url origin https://github.com/${GIT_USER}/${GIT_REPO}.git
-      - sudo pip install --upgrade pip
-      - npm config set git-tag-version true
-      - npm version $BUILD_TYPE -m "updating version to %s"
-      - git show-ref
-      - git push --tags origin VER3-546_updateBuild
-#      - npm publish
-#      - ng build --no-aot --no-build-optimizer
-#      - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-#      - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-#      - sudo apt-get update
-#      - sudo apt-get install -y docker-ce
-#      - sudo -H pip install awscli --upgrade --ignore-installed six
-#      - export PATH=~/.local/bin:$PATH
-#      - mkdir -p ~/.aws
-#      - ./scripts/ecr_user.sh
-#      - eval $(aws ecr get-login --no-include-email --region us-east-1)
-#      - VERSION=$(node -e "console.log(require('./package.json').version)")
-#      - docker build -t $REPO/$IMAGE:latest -t $REPO/$IMAGE:$VERSION .
-#      - docker push $REPO/$IMAGE:latest
-#      - docker push $REPO/$IMAGE:$VERSION
+  - stage: build
+    script:
+    - git --version
+    - ls -lrt ./scripts/*.sh
+    - eval "$(ssh-agent -s)"
+    - sudo ssh-add ${GIT_SSH_KEY}
+    - git config --global user.name GIT_USER
+    - git config --global user.email GIT_EMAIL
+    - git config --global user.email GH_TOKEN
+    - git remote set-url origin https://${GH_TOKEN}@github.com/${GIT_USER}/${GIT_REPO}.git
+    - sudo pip install --upgrade pip
+    - npm config set git-tag-version true
+    - npm version $BUILD_TYPE -m "updating version to %s"
+    - git show-ref
+    - git push --tags origin VER3-546_updateBuild
 after_success:
 - echo "done"
